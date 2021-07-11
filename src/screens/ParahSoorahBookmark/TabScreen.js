@@ -25,7 +25,7 @@ export default function TabViewExample({ tabIndex }) {
     const renderTabBar = props => (
         <TabBar
           {...props}
-          indicatorStyle={{ backgroundColor: colors[theme].white, opacity:0.85,borderBottomColor: colors[theme].white }}
+          indicatorStyle={{ backgroundColor: colors[theme].primary, opacity:0.85,borderBottomColor: colors[theme].white }}
           style={{ backgroundColor: colors[theme].black}}
           renderLabel={({ route, focused, color }) => (
             <Text adjustsFontSizeToFit style={{ color: focused? colors[theme].primary: colors[theme].gray, margin: 8 }}>

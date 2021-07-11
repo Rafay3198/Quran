@@ -4,19 +4,21 @@ import { useSelector } from 'react-redux'
 import { colors } from '../../config/theme'
 import HOC from '../../redux'
 import { toQuranView } from '../../routes/main.routes'
+import {Parah} from '../../config/Parah'
 import IndexCard from '../Generals/IndexCard'
 
 const App = () => {
 
     const theme = useSelector(s => s.state.theme)
 
-    const _renderParahList = () => {
+    const _renderParahList = ({item, index}) => {
         return (
             <View style={styles.listItemContainer}>
                 <IndexCard
-                    onPress = {() => toQuranView()}
-                    english={"Sayaqool"}
-                    arabic={"سیقول"}
+                index={index}
+                    onPress = {() => toQuranView(item.pageIndex)}
+                    english={item.NameEnglish}
+                    arabic={item.Parah}
                 />
             </View>
         )
@@ -25,7 +27,7 @@ const App = () => {
     return (
         <View style={[styles.container, {backgroundColor: colors[theme].secondary}]}>
             <FlatList
-                data={Array.from({ length: 20 })}
+                data={Parah}
                 renderItem={_renderParahList}
                 keyExtractor={(_, i) => i.toString()}
             />

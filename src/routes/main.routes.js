@@ -5,13 +5,13 @@ import {RNNDrawer} from "react-native-navigation-drawer-extension";
 
 const STACK_ID = 'MAIN_STACK';
 
+
 export function showDrawer() {
     RNNDrawer.showDrawer({
         component: {
             name: "side-drawer",
             options: {
                 statusBar: {
-                    backgroundColor: colors.primary,
                     style: 'light',
                     drawBehind: false,
                 }
@@ -52,7 +52,7 @@ export function toHome(data) {
 export function toTabScreen(data) {
     Navigation.push(STACK_ID, {
         component: {
-            name: 'soorah/parah/bookmark',
+            name: 'soorah/parah',
             options: {
                 topBar: {
                    visible:false
@@ -69,11 +69,50 @@ export function toQuranView(data) {
         component: {
             name: 'QuranView',
             options: {
+                statusBar:{
+                    visible:false
+                },
                 topBar: {
                    visible:false
                 },
             },passProps:{
-                tabIndex: data
+                index: data
+            }
+        }
+    })
+}
+
+export function toSettings(data) {
+    Navigation.push(STACK_ID, {
+        component: {
+            name: 'settings',
+            options: {
+                statusBar:{
+                    visible:false
+                },
+                topBar: {
+                   visible:false
+                },
+            },passProps:{
+                data: data
+            }
+        }
+    })
+}
+
+export function toBookmarks(data) {
+    Navigation.push(STACK_ID, {
+        component: {
+            name: 'bookmarks',
+            options: {
+                statusBar:{
+                    visible:false
+                },
+                topBar: {
+                   visible:false
+                },
+            },passProps:{
+                index: data
             }
         }
     })

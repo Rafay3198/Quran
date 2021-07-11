@@ -3,6 +3,7 @@ import Splash from "./src/screens/splash";
 import Home from "./src/screens/Home/Home";
 import TabScreen from "./src/screens/ParahSoorahBookmark/TabScreen";
 import Bookmarks from "./src/screens/bookmarks/Bookmarks";
+import Settings from "./src/screens/settings/Settings";
 import QuranView from "./src/screens/QuranView/QuranView";
 import { withNavigationProvider, NavigationProvider } from 'react-native-navigation-hooks'
 import HOC from "./src/redux";
@@ -15,9 +16,12 @@ import { colors } from "./src/config/theme";
 
 Navigation.registerComponent('splash', () => withNavigationProvider(HOC(Splash)));
 Navigation.registerComponent('home', () => withNavigationProvider(HOC(Home)));
-Navigation.registerComponent('soorah/parah/bookmark', () => withNavigationProvider(HOC(TabScreen)));
+Navigation.registerComponent('soorah/parah', () => withNavigationProvider(HOC(TabScreen)));
 Navigation.registerComponent('bookmarks', () => withNavigationProvider(HOC(Bookmarks)));
 Navigation.registerComponent('QuranView', () => withNavigationProvider(HOC(QuranView)));
+Navigation.registerComponent('settings', () => withNavigationProvider(HOC(Settings)));
+Navigation.registerComponent("side-drawer", () => RNNDrawer.create(HOC(Drawer)));
+
 
 Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setRoot({
