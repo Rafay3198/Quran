@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
 import { colors, fonts } from '../../config/theme'
-import { toQuranView, toTabScreen, toBookmarks, showDrawer } from '../../routes/main.routes'
+import { toQuranView, toTabScreen, toBookmarks, showDrawer, toSettings } from '../../routes/main.routes'
 import { getLastRead } from '../../helper/AsyncStorage'
 import GradientBackground from '../Generals/Background'
 import Cards from '../Generals/Cards'
@@ -42,7 +42,7 @@ const App = ({ componentId }) => {
             <View style={[styles.headerContainer, {backgroundColor: colors[theme].black}]}>
                 <Icon onPress={showDrawer} name={"align-left"} size={25} color={colors[theme].primary} />
                 <Text style={[styles.title, { color: colors[theme].primary, backgroundColor: colors[theme].black }]}>القرآن الکریم</Text>
-                <Icon onPress={showDrawer} name={"settings"} size={20} color={colors[theme].primary} />
+                <Icon onPress={toSettings} name={"settings"} size={20} color={colors[theme].primary} />
             </View>
             <View style={[styles.seperator, { borderBottomColor: colors[theme].primary }]} />
             <View style={styles.cardContainer}>

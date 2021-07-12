@@ -2,12 +2,12 @@ const INITIAL_STATE = {
     user: null,
     theme: "dark",
     QuranFontColor: "white",
-    QuranBackgroundColor:"blue",
+    QuranBackgroundColor: "blue",
     token: null
 }
 
 const currentUser = (state = INITIAL_STATE, action) => {
-    switch(action.type){
+    switch (action.type) {
         case "SET_USER":
             return {
                 ...state,
@@ -21,9 +21,14 @@ const currentUser = (state = INITIAL_STATE, action) => {
                 loggedIn: false
             }
         case "SET_TOKEN":
-            return{
+            return {
                 ...state,
                 token: action.payload.token,
+            }
+        case "SET_THEME":
+            return {
+                ...state,
+                theme: action.payload.theme,
             }
         default:
             return state

@@ -87,11 +87,15 @@ export function toSettings(data) {
         component: {
             name: 'settings',
             options: {
-                statusBar:{
-                    visible:false
-                },
                 topBar: {
-                   visible:false
+                   title:{
+                       text:"Settings",
+                       alignment:'center',
+                       color:'white'
+                   },
+                   backButton:{
+                       color:'white'
+                   }
                 },
             },passProps:{
                 data: data

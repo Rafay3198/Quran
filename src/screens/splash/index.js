@@ -1,12 +1,20 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, View, ImageBackground, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch } from 'react-redux';
 import { colors } from '../../config/theme';
+import { getTheme } from '../../helper/AsyncStorage';
+import { setTheme } from '../../redux/actions/userActions';
 import { toHome } from '../../routes/main.routes';
 
 const App = () => {
 
+    const dispatch = useDispatch()
+
     useEffect(() => {
+        getTheme().then((theme) => {
+            dispatch(setTheme(theme))
+        })
         setTimeout(() => {
             toHome()
         }, 2000);

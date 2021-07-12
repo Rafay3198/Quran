@@ -18,3 +18,10 @@ export const saveToken = (token) => {
     }
 }
 
+export const setTheme = (theme) => {
+    return {
+        type: "SET_THEME",
+        payload: {theme}
+    }
+}
+
