@@ -64,19 +64,17 @@ export function toTabScreen(data) {
     })
 }
 
-export function toQuranView(data) {
+export function toQuranView(data, previewMode) {
     Navigation.push(STACK_ID, {
         component: {
             name: 'QuranView',
             options: {
-                statusBar:{
-                    visible:false
-                },
                 topBar: {
                    visible:false
                 },
             },passProps:{
-                index: data
+                index: data,
+                previewMode
             }
         }
     })
@@ -123,13 +121,13 @@ export function toBookmarks(data) {
 }
 
 export function toChangeColor(data) {
-    Navigation.showModal({
+    Navigation.push(STACK_ID, {
         component: {
             name: 'changeColorView',
             options: {
                 topBar:{
                     title:{
-                        text: "Customization",
+                        text: "Background color",
                     }
                 }
             },passProps:{
@@ -138,6 +136,24 @@ export function toChangeColor(data) {
         }
     })
 }
+
+export function toChangeFontColor(data) {
+    Navigation.push(STACK_ID, {
+        component: {
+            name: 'changeFontColor',
+            options: {
+                topBar:{
+                    title:{
+                        text: "Font color",
+                    }
+                }
+            },passProps:{
+                index: data
+            }
+        }
+    })
+}
+
 
 
 Navigation.setDefaultOptions({

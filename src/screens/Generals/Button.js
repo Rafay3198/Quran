@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { colors } from '../../config/theme'
 import HOC from '../../redux'
 
-const App = ({onPress}) => {
+const App = ({onPress, title}) => {
 
     const theme = useSelector(s => s.state.theme)
     return(
@@ -12,7 +12,7 @@ const App = ({onPress}) => {
         onPress={onPress}
         activeOpacity={0.8}
         style={[styles.container, {backgroundColor: colors[theme].primary}]}>
-            <Text style={styles.text}>Set background</Text>
+            <Text style={styles.text}>{title}</Text>
         </TouchableOpacity>
     )
 }

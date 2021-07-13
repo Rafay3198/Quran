@@ -6,12 +6,13 @@ import { colors, fonts } from '../../config/theme'
 import { saveTheme } from '../../helper/AsyncStorage'
 import { setTheme } from '../../redux/actions/userActions'
 import { ColorPicker } from 'react-native-color-picker'
-import { toChangeColor } from '../../routes/main.routes'
+import { toChangeColor, toChangeFontColor } from '../../routes/main.routes'
 
 const App = ({ componentId }) => {
 
     const [pageBackground, setPageBackground] = useState(0)
     const theme = useSelector(s => s.state.theme)
+    const state = useSelector(s => s.state)
     const dispatch = useDispatch()
     const [darkModeEnabled, setdarkMode] = useState(theme == 'dark' ? true : false)
 
@@ -42,13 +43,21 @@ const App = ({ componentId }) => {
                 />
             </View>
             <View>
-                <Text style={[styles.sectionTitle, { color: colors[theme].white, backgroundColor: colors[theme].black }]}>Quran Page Background</Text>
+                <Text style={[styles.sectionTitle, { color: colors[theme].white, backgroundColor: colors[theme].black }]}>Quran Page Theme</Text>
                 <TouchableOpacity
                     activeOpacity={0.8}
                     onPress={() => toChangeColor()}
                     style={[styles.darkModeContainer, { backgroundColor: colors[theme].black }]}>
-                    <Text style={[styles.text, { color: colors[theme].white }]}>White</Text>
-                    <View style={[styles.selectedColorView, { backgroundColor: colors.white }]} />
+                    <Text style={[styles.text, { color: colors[theme].white }]}>Page background</Text>
+                    <View style={[styles.selectedColorView, { backgroundColor: state.QuranBackgroundColor }]} />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => toChangeFontColor()}
+                    style={[styles.darkModeContainer, { backgroundColor: colors[theme].black }]}>
+                    <Text style={[styles.text, { color: colors[theme].white }]}>Font color</Text>
+                    <View style={[styles.selectedColorView, { backgroundColor: state.QuranFontColor }]} />
                 </TouchableOpacity>
             </View>
             

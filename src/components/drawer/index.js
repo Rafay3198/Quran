@@ -1,41 +1,70 @@
-import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
 import { colors, fonts } from '../../config/theme'
+import { getLastRead } from '../../helper/AsyncStorage'
+import { hideDrawer, toQuranView, toTabScreen,  } from '../../routes/main.routes'
 
-const App = () => {
+const App = ({componentId}) => {
+
+    const [lastRead, setLastRead] = useState(0)
+
+    useNavigationComponentDidAppear(() => {
+        getLastRead().then((index) => {
+            setLastRead(parseInt(index))
+        })
+    }, componentId)
+
 
     const theme = useSelector(s => s.state.theme)
+
+    const _navigate = (index) => {
+        hideDrawer()
+        if(index == 0) toQuranView(lastRead)
+        if(index == 1) toTabScreen(0)
+        if(index == 2) toTabScreen(1)
+        if(index == 3)
+        if(index == 4)
+        if(index == 5)
+        if(index == 6)
+    }
+    
     const item = [
         {
-            icon: require('../../imgs/logo.png'),
+            icon: require('../../imgs/icons/resume.png'),
             title:"Last Read",
             color: colors[theme].c1
         },
         {
-            icon: require('../../imgs/logo.png'),
+            icon: require('../../imgs/icons/parah.png'),
             title:"Parah Index",
             color: colors[theme].c2
         },
         {
-            icon: require('../../imgs/logo.png'),
+            icon: require('../../imgs/icons/soorah.png'),
             title:"Soorah Index",
             color: colors[theme].c3
         },
         {
-            icon: require('../../imgs/logo.png'),
+            icon: require('../../imgs/icons/bookmarks.png'),
             title:"Bookmarks",
             color: colors[theme].c4
         },
         {
-            icon: require('../../imgs/logo.png'),
+            icon: require('../../imgs/icons/settings.png'),
             title:"Settings",
             color: colors[theme].c1
         },
         {
-            icon: require('../../imgs/logo.png'),
-            title:"Rate us",
+            icon: require('../../imgs/icons/feedback.png'),
+            title:"Feedback",
             color: colors[theme].c2
+        },
+        {
+            icon: require('../../imgs/icons/star.png'),
+            title:"Rate us",
+            color: colors[theme].c3
         },
 
     ]
@@ -49,10 +78,12 @@ const App = () => {
                 {
                     item.map((item, index) => {
                         return(
-                            <View style={[styles.menuContainer, {borderColor:colors[theme].primary}]} key={index}>
+                            <TouchableOpacity 
+                            onPress={() => _navigate(index)}
+                            style={[styles.menuContainer, {borderColor:colors[theme].primary}]} key={index}>
                                 <Image source={item.icon}  resizeMode={'contain'} style={{height:20, width:20, tintColor:item.color}}/>
                                 <Text style={[styles.text, {color: colors[theme].white}]}>{item.title}</Text>
-                            </View>
+                            </TouchableOpacity>
                         )
                     })
                 }
@@ -60,6 +91,7 @@ const App = () => {
         </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {

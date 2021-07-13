@@ -19,7 +19,7 @@ const path = '../../imgs/'
 // }
 
 
-const QuranView = ({ index, componentId }) => {
+const QuranView = ({ index, componentId, previewMode }) => {
 
     const [pageChanged, setPageChanged] = useStateCallback(true)
 
@@ -31,7 +31,7 @@ const QuranView = ({ index, componentId }) => {
 
     const onViewRef = React.useRef(({viewableItems})=> {
         setPageChanged(viewableItems[0] , (e) => {
-            if(e !== undefined) storeLastRead(e.index.toString())
+            if(e !== undefined && !previewMode) storeLastRead(e.index.toString())
         })
     })
 
