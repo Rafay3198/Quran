@@ -11,7 +11,7 @@ export const storeLastRead = async (pageIndex) => {
 export const getLastRead = async () => {
     try {
       const value = await AsyncStorage.getItem('pageIndex')
-      if(value !== null) {
+      if(value !== null ) {
         return value
       }
     } catch(e) {

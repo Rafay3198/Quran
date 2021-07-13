@@ -13,7 +13,8 @@ const App = () => {
 
     useEffect(() => {
         getTheme().then((theme) => {
-            dispatch(setTheme(theme))
+            if (theme == undefined) dispatch(setTheme("dark"))
+            else dispatch(setTheme(theme))
         })
         setTimeout(() => {
             toHome()

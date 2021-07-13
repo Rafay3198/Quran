@@ -4,6 +4,7 @@ import Home from "./src/screens/Home/Home";
 import TabScreen from "./src/screens/ParahSoorahBookmark/TabScreen";
 import Bookmarks from "./src/screens/bookmarks/Bookmarks";
 import Settings from "./src/screens/settings/Settings";
+import ChangeColorView from "./src/screens/settings/ChangeColorView";
 import QuranView from "./src/screens/QuranView/QuranView";
 import { withNavigationProvider, NavigationProvider } from 'react-native-navigation-hooks'
 import HOC from "./src/redux";
@@ -21,6 +22,7 @@ Navigation.registerComponent('bookmarks', () => withNavigationProvider(HOC(Bookm
 Navigation.registerComponent('QuranView', () => withNavigationProvider(HOC(QuranView)));
 Navigation.registerComponent('settings', () => withNavigationProvider(HOC(Settings)));
 Navigation.registerComponent("side-drawer", () => RNNDrawer.create(HOC(Drawer)));
+Navigation.registerComponent('changeColorView', () => withNavigationProvider(HOC(ChangeColorView)));
 
 
 Navigation.events().registerAppLaunchedListener(() => {

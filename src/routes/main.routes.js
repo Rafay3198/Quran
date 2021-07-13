@@ -122,6 +122,23 @@ export function toBookmarks(data) {
     })
 }
 
+export function toChangeColor(data) {
+    Navigation.showModal({
+        component: {
+            name: 'changeColorView',
+            options: {
+                topBar:{
+                    title:{
+                        text: "Customization",
+                    }
+                }
+            },passProps:{
+                index: data
+            }
+        }
+    })
+}
+
 
 Navigation.setDefaultOptions({
     statusBar:{

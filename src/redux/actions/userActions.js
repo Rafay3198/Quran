@@ -25,3 +25,17 @@ export const setTheme = (theme) => {
     }
 }
 
+export const setBackgroundColor = (QuranBackgroundColor) => {
+    return {
+        type: "SET_BACKGROUND",
+        payload: {QuranBackgroundColor}
+    }
+}
+
+export const setTintColor = (QuranFontColor) => {
+    return {
+        type: "SET_TINTCOLOR",
+        payload: {QuranFontColor}
+    }
+}
+

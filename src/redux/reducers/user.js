@@ -1,8 +1,8 @@
 const INITIAL_STATE = {
     user: null,
     theme: "dark",
-    QuranFontColor: "white",
-    QuranBackgroundColor: "blue",
+    QuranFontColor: "red",
+    QuranBackgroundColor: "black",
     token: null
 }
 
@@ -29,6 +29,16 @@ const currentUser = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 theme: action.payload.theme,
+            }
+        case "SET_BACKGROUND":
+            return {
+                ...state,
+                QuranBackgroundColor: action.payload.QuranBackgroundColor,
+            }
+        case "SET_TINTCOLOR":
+            return {
+                ...state,
+                QuranFontColor: action.payload.QuranFontColor,
             }
         default:
             return state
