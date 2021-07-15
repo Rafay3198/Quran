@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
 import { colors, fonts } from '../../config/theme'
 import { getLastRead } from '../../helper/AsyncStorage'
-import { hideDrawer, toQuranView, toTabScreen,  } from '../../routes/main.routes'
+import { hideDrawer, toQuranView, toSettings, toTabScreen,  } from '../../routes/main.routes'
 
 const App = ({componentId}) => {
 
@@ -24,10 +24,10 @@ const App = ({componentId}) => {
         if(index == 0) toQuranView(lastRead)
         if(index == 1) toTabScreen(0)
         if(index == 2) toTabScreen(1)
-        if(index == 3)
-        if(index == 4)
-        if(index == 5)
-        if(index == 6)
+        // if(index == 3)
+        if(index == 4) toSettings()
+        if(index == 5) Linking.openURL('mailto://rafaymustafa.rm@gmail.com&subject=Quran App Feedback&body=Quran App Feedback')
+        // if(index == 6)
     }
     
     const item = [

@@ -51,7 +51,7 @@ const App = ({ componentId }) => {
                 />
                 <Text style={[styles.sectionTitle, { color: colors[theme].white, backgroundColor: colors[theme].black }]}>Preview</Text>
                 <TouchableOpacity 
-                onPress={() => toQuranView(547)}
+                onPress={() => toQuranView(547, true)}
                 style={{ flex: 1, padding: 10 }}>
                     <Image
                         source={require('../../imgs/five_hundred_and_forty_nine.png')}

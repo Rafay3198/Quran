@@ -1,8 +1,8 @@
 const INITIAL_STATE = {
     user: null,
     theme: "dark",
-    QuranFontColor: "red",
-    QuranBackgroundColor: "black",
+    QuranFontColor: "black",
+    QuranBackgroundColor: "white",
     token: null
 }
 

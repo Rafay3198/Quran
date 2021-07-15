@@ -7,13 +7,15 @@ const { View,  Image, Dimensions } = require('react-native');
 const totalItemWidth = Dimensions.get('window').width;
 const totalItemHeight = Dimensions.get('window').height;
 
-const Page = ({item, index}) => {
+const Page = ({item, index, onTouch}) => {
 
     const backgroundColor = useSelector(s => s.state.QuranBackgroundColor)
     const fontColor = useSelector(s => s.state.QuranFontColor)
 
     return (
-        <View style={{ flex: 1 }}>
+        <View 
+        onTouchEnd={() => onTouch(index)}
+        style={{ flex: 1 }}>
             <Image style={{ flex: 1, 
                 width: totalItemWidth, 
                 height: totalItemHeight,
