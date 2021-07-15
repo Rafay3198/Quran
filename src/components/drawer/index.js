@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Linking, ScrollView, Share, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
 import { colors, fonts } from '../../config/theme'
@@ -19,12 +19,32 @@ const App = ({componentId}) => {
 
     const theme = useSelector(s => s.state.theme)
 
+    const onShare = async () => {
+        try {
+          const result = await Share.share({
+            message:
+              'Salam! Install Quran app on your device and read it with your customized colors',
+          });
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+              // shared with activity type of result.activityType
+            } else {
+              // shared
+            }
+          } else if (result.action === Share.dismissedAction) {
+            // dismissed
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+      };
+
     const _navigate = (index) => {
         hideDrawer()
         if(index == 0) toQuranView(lastRead)
         if(index == 1) toTabScreen(0)
         if(index == 2) toTabScreen(1)
-        // if(index == 3)
+        if(index == 3) onShare()
         if(index == 4) toSettings()
         if(index == 5) Linking.openURL('mailto://rafaymustafa.rm@gmail.com&subject=Quran App Feedback&body=Quran App Feedback')
         // if(index == 6)
@@ -47,8 +67,8 @@ const App = ({componentId}) => {
             color: colors[theme].c3
         },
         {
-            icon: require('../../imgs/icons/bookmarks.png'),
-            title:"Bookmarks",
+            icon: require('../../imgs/icons/share.png'),
+            title:"Share App",
             color: colors[theme].c4
         },
         {

@@ -14,7 +14,7 @@ const Page = ({item, index, onTouch}) => {
 
     return (
         <View 
-        onTouchEnd={() => onTouch(index)}
+        // onTouchEnd={() => onTouch(index)}
         style={{ flex: 1 }}>
             <Image style={{ flex: 1, 
                 width: totalItemWidth, 

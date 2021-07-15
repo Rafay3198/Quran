@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
 import { colors, fonts } from '../../config/theme'
-import { toQuranView, toTabScreen, toBookmarks, showDrawer, toSettings } from '../../routes/main.routes'
+import { toQuranView, toTabScreen, toBookmarks, showDrawer, toSettings, toNeedToKnow } from '../../routes/main.routes'
 import { getLastRead } from '../../helper/AsyncStorage'
 import GradientBackground from '../Generals/Background'
 import Cards from '../Generals/Cards'
@@ -25,7 +25,7 @@ const App = ({ componentId }) => {
         require("../../imgs/icons/resume.png"),
         require("../../imgs/icons/parah2.png"),
         require("../../imgs/icons/soorah.png"),
-        require("../../imgs/icons/bookmarks.png")
+        require("../../imgs/icons/parah.png")
     ]
 
     const theme = useSelector(s => s.state.theme)
@@ -69,13 +69,20 @@ const App = ({ componentId }) => {
                     onPress={() => toTabScreen(1)}
                     imageSource={imageSource[2]}
                 />
-                <Cards
+                 <Cards
                     theme={theme}
                     imageStyle={{ tintColor: colors[theme].c4 }}
-                    text={"Bookmarks"}
+                    text={"Need to Know"}
+                    onPress={() => toNeedToKnow()}
+                    imageSource={imageSource[3]}
+                /> 
+                {/* <Cards
+                    theme={theme}
+                    imageStyle={{ tintColor: colors[theme].c4 }}
+                    text={"Need to Know"}
                     onPress={() => toBookmarks()}
                     imageSource={imageSource[3]}
-                />
+                /> */}
             </View>
         </View>
     )

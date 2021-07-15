@@ -23,8 +23,8 @@ const path = '../../imgs/'
 const QuranView = ({ index, componentId, previewMode }) => {
 
     const [pageChanged, setPageChanged] = useStateCallback(true)
-    const [currentindex, setCurrentIndex] = useState(0)
-    const [topBar, setTopBar] = useStateCallback(false)
+    // const [currentindex, setCurrentIndex] = useState(0)
+    // const [topBar, setTopBar] = useStateCallback(false)
 
     // Navigation.mergeOptions(componentId, {
     //     statusBar: {
@@ -32,21 +32,21 @@ const QuranView = ({ index, componentId, previewMode }) => {
     //     }
     // })
 
-    const _showTopBar = (index) => {
-        setCurrentIndex(index)
-        setTopBar(!topBar, (state) => {
-            Navigation.mergeOptions(componentId, {
-                topBar:{
-                    visible:state,
-                    background:{
-                        color: 'black'
-                    }
-                }
-            })
+    // const _showTopBar = (index) => {
+    //     setCurrentIndex(index)
+    //     setTopBar(!topBar, (state) => {
+    //         Navigation.mergeOptions(componentId, {
+    //             topBar:{
+    //                 visible:state,
+    //                 background:{
+    //                     color: 'black'
+    //                 }
+    //             }
+    //         })
 
-        })
+    //     })
         
-    }
+    // }
 
     const onViewRef = React.useRef(({ viewableItems }) => {
         setPageChanged(viewableItems[0], (e) => {
@@ -84,7 +84,7 @@ const QuranView = ({ index, componentId, previewMode }) => {
                     <Page 
                     item={item} 
                     index={index}
-                    onTouch = {(index) => _showTopBar(index)} 
+                    // onTouch = {(index) => _showTopBar(index)} 
                     pageChanged={pageChanged}
                     />}
             />

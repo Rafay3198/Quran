@@ -23,6 +23,7 @@ const App = ({text, onPress, imageSource, theme, imageStyle}) => {
 const styles = StyleSheet.create({
     container: {
         padding:20,
+        elevation:5,
         flex:1,
         margin:3,
         borderRadius:8,

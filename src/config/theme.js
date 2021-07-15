@@ -10,7 +10,7 @@ export const colors = {
         c1:"#2FCA6F",
         c2:"#8282F3",
         c3:"#F1AA39",
-        c4:"#AD0020"
+        c4:"#E51E00"
     },
     light:{
         primary: '#5F00E7',

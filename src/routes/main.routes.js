@@ -102,6 +102,51 @@ export function toSettings(data) {
     })
 }
 
+export function toDescriptionImages(data) {
+    Navigation.push(STACK_ID, {
+        component: {
+            name: 'descriptionImages',
+            options: {
+                topBar:{
+                    visible: false
+                }
+            }
+        }
+    })
+}
+
+export function toNeedToKnow(data) {
+    Promise.all([
+        Icon.getImageSource('image', 22, "white"),
+    ]).then(([rightIcon]) => {
+        Navigation.push(STACK_ID, {
+            component: {
+                name: 'needToKnow',
+                options: {
+                    topBar: {
+                        rightButtons:[
+                            {
+                                id:"needToKnowRight",
+                                icon: rightIcon,
+                            }
+                        ],
+                       title:{
+                           text: "Need to know",
+                           color: "white"
+                       },
+                       backButton:{
+                           color:"white"
+                       },
+                    },
+                },passProps:{
+                    index: data
+                }
+            }
+        })
+    })
+    
+}
+
 export function toBookmarks(data) {
     Navigation.push(STACK_ID, {
         component: {
