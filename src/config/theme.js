@@ -7,10 +7,11 @@ export const colors = {
         cloud : '#ecf0f1',
         black:'black',
         backgroundGray: "#EAEAEA",
-        c1:"#2FCA6F",
+        c1:"#07C9EE",
         c2:"#8282F3",
         c3:"#F1AA39",
-        c4:"#E51E00"
+        c4:"#E51E00",
+        c5:"#2FCA6F"
     },
     light:{
         primary: '#5F00E7',
@@ -23,7 +24,8 @@ export const colors = {
         c1:"#2FCA6F",
         c2:"#8282F3",
         c3:"#F1AA39",
-        c4:"#AD0020"
+        c4:"#AD0020",
+        c5:"#4B4BF7"
     },
     primary: '#D89B27',
     secondary : "#121B20",
@@ -36,21 +38,10 @@ export const colors = {
     success: '#2ECC71',
 }
 export const fonts = {
-    poppins : {
-        semiBold : 'Poppins-SemiBold',
-        regular : 'Poppins-Regular',
-        medium : 'Poppins-Medium',
-        light : 'Poppins-Light.ttf',
-        bold : 'Poppins-Bold',
-        extraBold : 'Poppins-ExtraBold',
-        black : 'Poppins-Black'
-    },
     mehr: "Mehr",
     arabicFont: "noorehuda",
     SFBold:"SF-Pro-Display-Bold",
     SFNormal:"SF-Pro-Display-Regular",
-    SFItalic:"SF-Pro-Display-Bold",
-    SFBoldItalic:"SF-Pro-Display-Bold",
     SFLight:"SF-Pro-Display-Light"
 }
 

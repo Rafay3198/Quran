@@ -23,10 +23,11 @@ const App = ({componentId}) => {
         try {
           const result = await Share.share({
             message:
-              'Salam! Install Quran app on your device and read it with your customized colors',
+              'Salam! Install Quran app on your device and read it with your customized colors. \nInstall it now \n  \nhttps://play.google.com/store/apps/details?id=com.quranforummah',
           });
           if (result.action === Share.sharedAction) {
             if (result.activityType) {
+
               // shared with activity type of result.activityType
             } else {
               // shared
@@ -46,8 +47,8 @@ const App = ({componentId}) => {
         if(index == 2) toTabScreen(1)
         if(index == 3) onShare()
         if(index == 4) toSettings()
-        if(index == 5) Linking.openURL('mailto://rafaymustafa.rm@gmail.com&subject=Quran App Feedback&body=Quran App Feedback')
-        // if(index == 6)
+        if(index == 5) Linking.openURL('mailto://rafaymustafa.rm@gmail.com&subject=Quran App Feedback&body=Quran App Feedback.')
+        if(index == 6) Linking.openURL('https://play.google.com/store/apps/details?id=com.quranforummah')
     }
     
     const item = [

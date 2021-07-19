@@ -22,6 +22,7 @@
     "react-native-navigation-drawer-extension": "^4.0.0",
     "react-native-navigation-hooks": "^6.3.0",
     "react-native-pager-view": "^5.2.1",
+    "react-native-simple-compass": "^1.0.0",
     "react-native-snackbar": "^2.4.0",
     "react-native-spinkit": "^1.5.1",
     "react-native-swipe-gestures": "^1.0.5",

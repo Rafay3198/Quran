@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, FlatList } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
 import { colors, fonts } from '../../config/theme'
-import { toQuranView, toTabScreen, toBookmarks, showDrawer, toSettings, toNeedToKnow } from '../../routes/main.routes'
+import { toQuranView, toTabScreen, toBookmarks, showDrawer, toSettings, toNeedToKnow, toQiblaDirection } from '../../routes/main.routes'
 import { getLastRead } from '../../helper/AsyncStorage'
 import GradientBackground from '../Generals/Background'
 import Cards from '../Generals/Cards'
@@ -22,19 +22,40 @@ const App = ({ componentId }) => {
 
 
     const imageSource = [
-        require("../../imgs/icons/resume.png"),
-        require("../../imgs/icons/parah2.png"),
-        require("../../imgs/icons/soorah.png"),
-        require("../../imgs/icons/parah.png")
+        {image : require("../../imgs/icons/resume.png"), title: "Resume", color: 'c1'},
+        {image : require("../../imgs/icons/parah2.png"), title: "Parah", color: 'c2'},
+        {image : require("../../imgs/icons/soorah.png"), title: "Soorah", color: 'c3'},
+        {image : require("../../imgs/icons/parah.png"), title: "Need to know", color: 'c4'},
+        {image : require("../../imgs/icons/qibla.png"), title: "Qibla direction", color: 'c5'}
     ]
 
     const theme = useSelector(s => s.state.theme)
+
+    const _navigate = (index) => {
+        if (index == 0) toQuranView(lastRead)
+        if (index == 1) toTabScreen(0)
+        if (index == 2) toTabScreen(1)
+        if (index == 3) toNeedToKnow()
+        if (index == 4) toQiblaDirection()
+    }
 
     Navigation.mergeOptions(componentId, {
         topBar: {
             title: { fontFamily: fonts.mehr, alignment: 'center', fontSize: 21 }
         }
     });
+
+    const renderItem = ({item, index}) => {
+        return(
+            <Cards
+            theme={theme}
+            onPress={() => _navigate(index)}
+            imageStyle={{ tintColor: colors[theme][item.color] }}
+            text={item.title}
+            imageSource={item.image}
+        /> 
+        )
+    }
 
     return (
         <View style={styles.container}>
@@ -45,7 +66,14 @@ const App = ({ componentId }) => {
                 <Icon onPress={toSettings} name={"settings"} size={20} color={colors[theme].primary} />
             </View>
             <View style={[styles.seperator, { borderBottomColor: colors[theme].primary }]} />
-            <View style={styles.cardContainer}>
+            <FlatList 
+                    data={imageSource}
+                    keyExtractor={(_,i) => i.toString()}
+                    numColumns={2}
+                    renderItem={renderItem}
+                />
+            {/* <View style={styles.cardContainer}>
+                
                 <Cards
                     theme={theme}
                     onPress={() => toQuranView(lastRead)}
@@ -60,8 +88,8 @@ const App = ({ componentId }) => {
                     onPress={() => toTabScreen(0)}
                     imageSource={imageSource[1]}
                 />
-            </View>
-            <View style={styles.cardContainer}>
+            </View> */}
+            {/* <View style={styles.cardContainer}>
                 <Cards
                     theme={theme}
                     imageStyle={{ tintColor: colors[theme].c3 }}
@@ -76,14 +104,14 @@ const App = ({ componentId }) => {
                     onPress={() => toNeedToKnow()}
                     imageSource={imageSource[3]}
                 /> 
-                {/* <Cards
+                <Cards
                     theme={theme}
                     imageStyle={{ tintColor: colors[theme].c4 }}
                     text={"Need to Know"}
                     onPress={() => toBookmarks()}
                     imageSource={imageSource[3]}
-                /> */}
-            </View>
+                />
+            </View> */}
         </View>
     )
 }

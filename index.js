@@ -1,6 +1,7 @@
 import {Navigation} from "react-native-navigation";
 import Splash from "./src/screens/splash";
 import Home from "./src/screens/Home/Home";
+import QiblaDirection from "./src/screens/QiblaDirection/QiblaDirection";
 import TabScreen from "./src/screens/ParahSoorahBookmark/TabScreen";
 import Bookmarks from "./src/screens/bookmarks/Bookmarks";
 import Settings from "./src/screens/settings/Settings";
@@ -29,6 +30,7 @@ Navigation.registerComponent('changeColorView', () => withNavigationProvider(HOC
 Navigation.registerComponent('changeFontColor', () => withNavigationProvider(HOC(ChangeFontColor)));
 Navigation.registerComponent('needToKnow', () => withNavigationProvider(HOC(NeedToKnow)));
 Navigation.registerComponent('descriptionImages', () => withNavigationProvider(HOC(DescriptionImages)));
+Navigation.registerComponent('qiblaDirection', () => withNavigationProvider(HOC(QiblaDirection)));
 
 
 Navigation.events().registerAppLaunchedListener(() => {

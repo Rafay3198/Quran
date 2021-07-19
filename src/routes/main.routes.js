@@ -115,6 +115,25 @@ export function toDescriptionImages(data) {
     })
 }
 
+export function toQiblaDirection(data) {
+    Navigation.push(STACK_ID, {
+        component: {
+            name: 'qiblaDirection',
+            options: {
+                topBar:{
+                    title:{
+                        text:"Qibla direction",
+                        color:"white"
+                    },
+                    backButton:{
+                        color:"white"
+                    }
+                }
+            }
+        }
+    })
+}
+
 export function toNeedToKnow(data) {
     Promise.all([
         Icon.getImageSource('image', 22, "white"),

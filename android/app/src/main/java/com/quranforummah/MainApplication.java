@@ -1,4 +1,4 @@
-package com.quranapp;
+package com.quranforummah;
 
 import android.app.Application;
 import android.content.Context;

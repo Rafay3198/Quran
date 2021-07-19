@@ -1,4 +1,4 @@
-package com.quranapp;
+package com.quranforummah;
 
 import com.reactnativenavigation.NavigationActivity;
 
