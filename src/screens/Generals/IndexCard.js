@@ -11,6 +11,7 @@ const IndexCard = ({english, onPress, arabic, index}) => {
     return(
        
             <TouchableOpacity 
+            activeOpacity={0.9}
             onPress={() => onPress() || {} }
             style={[styles.container, 
                 // {borderColor:'red'}

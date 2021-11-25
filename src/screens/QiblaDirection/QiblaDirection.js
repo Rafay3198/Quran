@@ -40,7 +40,7 @@ const App = ({componentId}) => {
             <Image
                 source={require('../../imgs/icons/qibla.png')}
                 resizeMode={'contain'}
-                // style={{tintColor: colors[theme].white, width:'90%', }}
+                style={{tintColor: colors[theme].white, width:'90%', }}
                 style={[
                     styles.image,
                     { transform: [{ rotate: `${260 - degree}deg` }] ,tintColor: colors[theme].white },

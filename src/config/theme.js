@@ -10,7 +10,7 @@ export const colors = {
         c1:"#07C9EE",
         c2:"#8282F3",
         c3:"#F1AA39",
-        c4:"#E51E00",
+        c4:"#FC5034",
         c5:"#2FCA6F"
     },
     light:{

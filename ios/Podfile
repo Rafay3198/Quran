@@ -16,6 +16,8 @@ target 'QuranApp' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'react-native-keep-awake', :path => '../node_modules/react-native-keep-awake'
+
   target 'QuranAppTests' do
     inherit! :complete
     # Pods for testing

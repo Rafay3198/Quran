@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, FlatList } from 'react-native'
+import { StyleSheet, View, Text, FlatList, ScrollView } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
@@ -9,10 +9,14 @@ import { getLastRead } from '../../helper/AsyncStorage'
 import GradientBackground from '../Generals/Background'
 import Cards from '../Generals/Cards'
 import Icon from 'react-native-vector-icons/Feather'
+import { BannerAd } from '@react-native-firebase/admob';
+import { adUnitId, Ad_medium_banner } from '../../config/Keys'
+import Ads from '../Generals/Ads'
 
 const App = ({ componentId }) => {
 
     const [lastRead, setLastRead] = useState(0)
+    const [isAdShown, setIsAdShown] = useState(false)
 
     useNavigationComponentDidAppear(() => {
         getLastRead().then((index) => {
@@ -22,11 +26,11 @@ const App = ({ componentId }) => {
 
 
     const imageSource = [
-        {image : require("../../imgs/icons/resume.png"), title: "Resume", color: 'c1'},
-        {image : require("../../imgs/icons/parah2.png"), title: "Parah", color: 'c2'},
-        {image : require("../../imgs/icons/soorah.png"), title: "Soorah", color: 'c3'},
-        {image : require("../../imgs/icons/parah.png"), title: "Need to know", color: 'c4'},
-        {image : require("../../imgs/icons/qibla.png"), title: "Qibla direction", color: 'c5'}
+        { image: require("../../imgs/icons/resume.png"), title: "Resume", color: 'c1' },
+        { image: require("../../imgs/icons/parah2.png"), title: "Parah", color: 'c2' },
+        { image: require("../../imgs/icons/soorah.png"), title: "Soorah", color: 'c3' },
+        { image: require("../../imgs/icons/parah.png"), title: "Need to know", color: 'c4' },
+        {image : require("../../imgs/icons/bookmarks.png"), title: "Bookmarks", color: 'c5'}
     ]
 
     const theme = useSelector(s => s.state.theme)
@@ -36,7 +40,7 @@ const App = ({ componentId }) => {
         if (index == 1) toTabScreen(0)
         if (index == 2) toTabScreen(1)
         if (index == 3) toNeedToKnow()
-        if (index == 4) toQiblaDirection()
+        if (index == 4) toBookmarks()
     }
 
     Navigation.mergeOptions(componentId, {
@@ -45,73 +49,47 @@ const App = ({ componentId }) => {
         }
     });
 
-    const renderItem = ({item, index}) => {
-        return(
+    const renderItem = ({ item, index }) => {
+        return (
             <Cards
-            theme={theme}
-            onPress={() => _navigate(index)}
-            imageStyle={{ tintColor: colors[theme][item.color] }}
-            text={item.title}
-            imageSource={item.image}
-        /> 
+                theme={theme}
+                onPress={() => _navigate(index)}
+                imageStyle={{ tintColor: colors[theme][item.color] }}
+                text={item.title}
+                imageSource={item.image}
+            />
         )
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: colors[theme].primary }]}>
             <GradientBackground theme={theme} />
-            <View style={[styles.headerContainer, {backgroundColor: colors[theme].black}]}>
-                <Icon onPress={showDrawer} name={"align-left"} size={25} color={colors[theme].primary} />
+            <View style={[styles.headerContainer, { backgroundColor: colors[theme].black }]}>
+                <Icon
+                    onPress={showDrawer}
+                    name={"align-left"}
+                    size={25}
+                    style={{ paddingLeft: 7, paddingRight: 7 }}
+                    color={colors[theme].primary} />
                 <Text style={[styles.title, { color: colors[theme].primary, backgroundColor: colors[theme].black }]}>القرآن الکریم</Text>
-                <Icon onPress={toSettings} name={"settings"} size={20} color={colors[theme].primary} />
+                <Icon
+                    onPress={toSettings}
+                    name={"settings"}
+                    size={20}
+                    style={{ paddingLeft: 7, paddingRight: 8 }}
+                    color={colors[theme].primary} />
             </View>
             <View style={[styles.seperator, { borderBottomColor: colors[theme].primary }]} />
-            <FlatList 
-                    data={imageSource}
-                    keyExtractor={(_,i) => i.toString()}
-                    numColumns={2}
-                    renderItem={renderItem}
-                />
-            {/* <View style={styles.cardContainer}>
-                
-                <Cards
-                    theme={theme}
-                    onPress={() => toQuranView(lastRead)}
-                    imageStyle={{ tintColor: colors[theme].c1 }}
-                    text={"Resume"}
-                    imageSource={imageSource[0]}
-                />
-                <Cards
-                    theme={theme}
-                    text={"Parah"}
-                    imageStyle={{ tintColor: colors[theme].c2 }}
-                    onPress={() => toTabScreen(0)}
-                    imageSource={imageSource[1]}
-                />
-            </View> */}
-            {/* <View style={styles.cardContainer}>
-                <Cards
-                    theme={theme}
-                    imageStyle={{ tintColor: colors[theme].c3 }}
-                    text={"Soorah"}
-                    onPress={() => toTabScreen(1)}
-                    imageSource={imageSource[2]}
-                />
-                 <Cards
-                    theme={theme}
-                    imageStyle={{ tintColor: colors[theme].c4 }}
-                    text={"Need to Know"}
-                    onPress={() => toNeedToKnow()}
-                    imageSource={imageSource[3]}
-                /> 
-                <Cards
-                    theme={theme}
-                    imageStyle={{ tintColor: colors[theme].c4 }}
-                    text={"Need to Know"}
-                    onPress={() => toBookmarks()}
-                    imageSource={imageSource[3]}
-                />
-            </View> */}
+            <FlatList
+                data={imageSource}
+                keyExtractor={(_, i) => i.toString()}
+                numColumns={2}
+                renderItem={renderItem}
+            />
+            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, marginBottom: 5 }}>
+                <Ads adSize={Ad_medium_banner} />
+            </View>
+
         </View>
     )
 }
@@ -138,12 +116,12 @@ const styles = StyleSheet.create({
         margin: 5,
         marginTop: 0
     },
-    headerContainer:{
+    headerContainer: {
         // flex:1
-        flexDirection:'row',
-        justifyContent:'space-between',
-        alignItems:'center',
-        padding:8
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 8
     }
 })
 export default App;

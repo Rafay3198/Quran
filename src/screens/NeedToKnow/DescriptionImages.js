@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Image, StyleSheet, View } from 'react-native'
 import { Navigation } from 'react-native-navigation'
+import Ads from '../Generals/Ads'
 
 const App = ({componentId}) => {
 
@@ -23,6 +24,7 @@ const App = ({componentId}) => {
                 source={require('../../imgs/icons/rumooz.jpg')}
                 resizeMode={'contain'}
             />
+            <Ads />
         </View>
     )
 }

@@ -4,6 +4,7 @@ import { useNavigationButtonPress } from 'react-native-navigation-hooks/dist'
 import { useSelector } from 'react-redux'
 import { colors, fonts } from '../../config/theme'
 import { toDescriptionImages } from '../../routes/main.routes'
+import Ads from '../Generals/Ads'
 
 const App = () => {
 
@@ -107,6 +108,7 @@ const App = () => {
                 keyExtractor={(_, i) => i.toString()}
                 renderItem={_renderItem}
             />
+            <Ads />
         </View>
     )
 }

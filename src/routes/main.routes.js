@@ -1,7 +1,8 @@
-import {Navigation} from "react-native-navigation";
-import {colors, fonts} from "../config/theme";
+import { Navigation } from "react-native-navigation";
+import { colors, fonts } from "../config/theme";
 import Icon from 'react-native-vector-icons/Feather'
-import {RNNDrawer} from "react-native-navigation-drawer-extension";
+import IconIonIcons from 'react-native-vector-icons/Ionicons'
+import { RNNDrawer } from "react-native-navigation-drawer-extension";
 
 const STACK_ID = 'MAIN_STACK';
 
@@ -40,9 +41,9 @@ export function toHome(data) {
             name: 'home',
             options: {
                 topBar: {
-                   visible:false
+                    visible: false
                 },
-            },passProps:{
+            }, passProps: {
                 data: data
             }
         }
@@ -55,9 +56,9 @@ export function toTabScreen(data) {
             name: 'soorah/parah',
             options: {
                 topBar: {
-                   visible:false
+                    visible: false
                 },
-            },passProps:{
+            }, passProps: {
                 tabIndex: data
             }
         }
@@ -65,20 +66,21 @@ export function toTabScreen(data) {
 }
 
 export function toQuranView(data, previewMode) {
-    Navigation.push(STACK_ID, {
-        component: {
-            name: 'QuranView',
-            options: {
-                topBar: {
-                   visible:false
+    
+        Navigation.push(STACK_ID, {
+            component: {
+                name: 'QuranView',
+                options: {
+                    topBar: {
+                        visible: false,
+                    },
+                }, passProps: {
+                    index: data,
+                    previewMode
                 },
-            },passProps:{
-                index: data,
-                previewMode
             }
-        }
-    })
-}
+        })
+    }
 
 export function toSettings(data) {
     Navigation.push(STACK_ID, {
@@ -86,16 +88,16 @@ export function toSettings(data) {
             name: 'settings',
             options: {
                 topBar: {
-                   title:{
-                       text:"Settings",
-                       alignment:'center',
-                       color:'white'
-                   },
-                   backButton:{
-                       color:'white'
-                   }
+                    title: {
+                        text: "Settings",
+                        alignment: 'center',
+                        color: 'white'
+                    },
+                    backButton: {
+                        color: 'white'
+                    }
                 },
-            },passProps:{
+            }, passProps: {
                 data: data
             }
         }
@@ -107,7 +109,7 @@ export function toDescriptionImages(data) {
         component: {
             name: 'descriptionImages',
             options: {
-                topBar:{
+                topBar: {
                     visible: false
                 }
             }
@@ -120,13 +122,13 @@ export function toQiblaDirection(data) {
         component: {
             name: 'qiblaDirection',
             options: {
-                topBar:{
-                    title:{
-                        text:"Qibla direction",
-                        color:"white"
+                topBar: {
+                    title: {
+                        text: "Qibla direction",
+                        color: "white"
                     },
-                    backButton:{
-                        color:"white"
+                    backButton: {
+                        color: "white"
                     }
                 }
             }
@@ -143,27 +145,27 @@ export function toNeedToKnow(data) {
                 name: 'needToKnow',
                 options: {
                     topBar: {
-                        rightButtons:[
+                        rightButtons: [
                             {
-                                id:"needToKnowRight",
+                                id: "needToKnowRight",
                                 icon: rightIcon,
                             }
                         ],
-                       title:{
-                           text: "Need to know",
-                           color: "white"
-                       },
-                       backButton:{
-                           color:"white"
-                       },
+                        title: {
+                            text: "Need to know",
+                            color: "white"
+                        },
+                        backButton: {
+                            color: "white"
+                        },
                     },
-                },passProps:{
+                }, passProps: {
                     index: data
                 }
             }
         })
     })
-    
+
 }
 
 export function toBookmarks(data) {
@@ -171,13 +173,12 @@ export function toBookmarks(data) {
         component: {
             name: 'bookmarks',
             options: {
-                statusBar:{
-                    visible:false
-                },
                 topBar: {
-                   visible:false
+                    title:{
+                        text: "Bookmarks"
+                    }
                 },
-            },passProps:{
+            }, passProps: {
                 index: data
             }
         }
@@ -189,12 +190,12 @@ export function toChangeColor(data) {
         component: {
             name: 'changeColorView',
             options: {
-                topBar:{
-                    title:{
+                topBar: {
+                    title: {
                         text: "Background color",
                     }
                 }
-            },passProps:{
+            }, passProps: {
                 index: data
             }
         }
@@ -206,12 +207,12 @@ export function toChangeFontColor(data) {
         component: {
             name: 'changeFontColor',
             options: {
-                topBar:{
-                    title:{
+                topBar: {
+                    title: {
                         text: "Font color",
                     }
                 }
-            },passProps:{
+            }, passProps: {
                 index: data
             }
         }
@@ -221,18 +222,53 @@ export function toChangeFontColor(data) {
 
 
 Navigation.setDefaultOptions({
-    statusBar:{
-        backgroundColor:colors.black
+    animations: {
+        setStackRoot:{
+            content: {
+                waitForRender: true,
+                enabled: true,
+                translationX: {
+                    from: require('react-native').Dimensions.get('window').width,
+                    to: 0,
+                    duration: 300
+                }
+            }
+        },
+        push: {
+            content: {
+                waitForRender: true,
+                enabled: true,
+                translationX: {
+                    from: require('react-native').Dimensions.get('window').width,
+                    to: 0,
+                    duration: 300
+                }
+            }
+        },
+        pop: {
+            content: {
+                waitForRender: true,
+                enabled: true,
+                translationX: {
+                    from: 0,
+                    to: -require('react-native').Dimensions.get('window').width,
+                    duration: 300
+                }
+            }
+        }
     },
-    topBar:{
-        backButton:{
-            color:colors.white
+    statusBar: {
+        backgroundColor: colors.black
+    },
+    topBar: {
+        backButton: {
+            color: colors.white
         },
-        title:{
-            color:colors.white
+        title: {
+            color: colors.white
         },
-        background:{
-            color:colors.primary
+        background: {
+            color: colors.primary
         }
     }
 })

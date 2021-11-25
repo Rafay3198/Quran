@@ -7,10 +7,10 @@ import { saveTheme } from '../../helper/AsyncStorage'
 import { setTheme } from '../../redux/actions/userActions'
 import { ColorPicker } from 'react-native-color-picker'
 import { toChangeColor, toChangeFontColor } from '../../routes/main.routes'
+import Ads from '../Generals/Ads'
 
 const App = ({ componentId }) => {
 
-    const [pageBackground, setPageBackground] = useState(0)
     const theme = useSelector(s => s.state.theme)
     const state = useSelector(s => s.state)
     const dispatch = useDispatch()
@@ -22,7 +22,6 @@ const App = ({ componentId }) => {
         saveTheme(darkModeEnabled ? "light" : "dark")
     }
 
-    const backgroundColors = ["white", "black", "green", "white", "black", "yellow", "blue", "red", "green", "white"]
 
     Navigation.mergeOptions(componentId, {
         topBar: {
@@ -60,6 +59,7 @@ const App = ({ componentId }) => {
                     <View style={[styles.selectedColorView, { backgroundColor: state.QuranFontColor }]} />
                 </TouchableOpacity>
             </View>
+            <Ads/>
             
         </View>
     )
@@ -92,8 +92,9 @@ const styles = StyleSheet.create({
     selectedColorView: {
         padding: 10,
         borderRadius: 30,
+        borderColor:'gray',
         elevation: 5,
-        borderWidth: 0.1
+        borderWidth: 0.5
     }
 })
 export default App;

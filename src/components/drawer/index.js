@@ -100,6 +100,7 @@ const App = ({componentId}) => {
                     item.map((item, index) => {
                         return(
                             <TouchableOpacity 
+                            activeOpacity={0.8}
                             onPress={() => _navigate(index)}
                             style={[styles.menuContainer, {borderColor:colors[theme].primary}]} key={index}>
                                 <Image source={item.icon}  resizeMode={'contain'} style={{height:20, width:20, tintColor:item.color}}/>
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
         margin:10,
         flexDirection:'row',
         marginBottom:0,
-        borderBottomWidth:0.3,
+        borderBottomWidth:0
     }
 })
 export default App;
