@@ -30,7 +30,7 @@ const App = ({ componentId }) => {
         { image: require("../../imgs/icons/parah2.png"), title: "Parah", color: 'c2' },
         { image: require("../../imgs/icons/soorah.png"), title: "Soorah", color: 'c3' },
         { image: require("../../imgs/icons/parah.png"), title: "Need to know", color: 'c4' },
-        {image : require("../../imgs/icons/bookmarks.png"), title: "Bookmarks", color: 'c5'}
+        // {image : require("../../imgs/icons/bookmarks.png"), title: "Bookmarks", color: 'c5'}
     ]
 
     const theme = useSelector(s => s.state.theme)
@@ -40,7 +40,7 @@ const App = ({ componentId }) => {
         if (index == 1) toTabScreen(0)
         if (index == 2) toTabScreen(1)
         if (index == 3) toNeedToKnow()
-        if (index == 4) toBookmarks()
+        // if (index == 4) toBookmarks()
     }
 
     Navigation.mergeOptions(componentId, {

@@ -15,7 +15,7 @@ const totalItemWidth = Dimensions.get('window').width;
 const QuranView = ({ index, componentId, previewMode }) => {
 
     const [pageChanged, setPageChanged] = useStateCallback(true)
-    const [fullScreenMode, setFullScreenMode] = useState(false)
+    const [fullScreenMode, setFullScreenMode] = useState(true)
     const [isbookmarked, setBookMarked] = useState(false)
     
     const onViewRef = React.useRef(({ viewableItems }) => {
@@ -33,14 +33,13 @@ const QuranView = ({ index, componentId, previewMode }) => {
 
 
     const _onTouchPage = () => {
-        // alert()
         setFullScreenMode(!fullScreenMode)
         fullScreenMode? showNavigationBar() : hideNavigationBar()
     }
 
     Promise.all([
-        Icon.getImageSource('bookmark', 20, "gray"),
-        Icon.getImageSource('bookmark-outline', 20, "gray"),
+        // Icon.getImageSource('bookmark', 20, "gray"),
+        // Icon.getImageSource('bookmark-outline', 20, "gray"),
     ]).then(([bookmarked, bookmark]) => {
         Navigation.mergeOptions(componentId, {
             statusBar: {
@@ -50,28 +49,28 @@ const QuranView = ({ index, componentId, previewMode }) => {
                 style:'dark'
             },
             topBar:{
-                visible: fullScreenMode? false: true,
-                background:{
-                    color:'white',
-                },
-                elevation: 0,
-                backButton:{
-                    color:'gray'
-                },
-                rightButtons: [
-                    {
-                        id: "bookmark",
-                        icon: isbookmarked? bookmarked: bookmark,
-                        color: 'gray'
-                    },
-                ],
+                visible: false,
+                // background:{
+                //     color:'white',
+                // },
+                // elevation: 0,
+                // backButton:{
+                //     color:'gray'
+                // },
+                // rightButtons: [
+                //     {
+                //         id: "bookmark",
+                //         icon: isbookmarked? bookmarked: bookmark,
+                //         color: 'gray'
+                //     },
+                // ],
             }
         })
     })
 
-    useNavigationButtonPress(() => {
-        setBookMarked(!isbookmarked)
-    },componentId, "bookmark")
+    // useNavigationButtonPress(() => {
+    //     setBookMarked(!isbookmarked)
+    // },componentId, "bookmark")
 
     return (
         <View style={{ flex: 1 }}>

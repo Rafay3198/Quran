@@ -48,6 +48,7 @@ const App = () => {
                 data={Parahs}
                 renderItem={_renderParahList}
                 keyExtractor={(_, i) => i.toString()}
+                keyboardShouldPersistTaps={'always'}
                 showsVerticalScrollIndicator={false}
             />
             <Ads />
