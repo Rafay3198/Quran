@@ -1,7 +1,6 @@
 import {Navigation} from "react-native-navigation";
 import Splash from "./src/screens/splash";
 import Home from "./src/screens/Home/Home";
-// import QiblaDirection from "./src/screens/QiblaDirection/QiblaDirection";
 import TabScreen from "./src/screens/ParahSoorahBookmark/TabScreen";
 import Bookmarks from "./src/screens/bookmarks/Bookmarks";
 import Settings from "./src/screens/settings/Settings";
@@ -14,7 +13,6 @@ import { withNavigationProvider, NavigationProvider } from 'react-native-navigat
 import HOC from "./src/redux";
 import { RNNDrawer } from "react-native-navigation-drawer-extension";
 import Drawer from "./src/components/drawer";
-
 import { colors } from "./src/config/theme";
 
 //Auth
