@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, FlatList, ScrollView } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { useNavigationComponentDidAppear } from 'react-native-navigation-hooks/dist'
@@ -7,6 +7,7 @@ import { colors, fonts } from '../../config/theme'
 import { toQuranView, toTabScreen, toBookmarks, showDrawer, toSettings, toNeedToKnow, toQiblaDirection } from '../../routes/main.routes'
 import { getLastRead } from '../../helper/AsyncStorage'
 import GradientBackground from '../Generals/Background'
+import { _oneSignalSetup } from '../../helper/onesignal'
 import Cards from '../Generals/Cards'
 import Icon from 'react-native-vector-icons/Feather'
 import { BannerAd } from '@react-native-firebase/admob';
@@ -23,6 +24,10 @@ const App = ({ componentId }) => {
             setLastRead(parseInt(index))
         })
     }, componentId)
+
+    useEffect(() => {
+        _oneSignalSetup()
+    }, [])
 
 
     const imageSource = [

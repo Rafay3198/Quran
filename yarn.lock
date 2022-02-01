@@ -4719,7 +4719,7 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
-invariant@^2.2.4:
+invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -7676,6 +7676,13 @@ react-native-navigation@^7.11.3:
     react-lifecycles-compat "2.0.0"
     remx "3.x.x"
     tslib "1.9.3"
+
+react-native-onesignal@^4.3.6:
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-4.3.6.tgz#dd24611611ab0c25137b8c0432e4eda5e5e7b6c5"
+  integrity sha512-zm1U1Y9ToEJp0Iz/xunW4LCRgdwp+y5Jp5smFkZTcojjtmHqwbpYu3Rc3aPIw5/MNDg/MTPOW607t8TAk4ZcBQ==
+  dependencies:
+    invariant "^2.2.2"
 
 react-native-pager-view@^5.2.1:
   version "5.2.1"
