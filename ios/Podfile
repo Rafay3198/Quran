@@ -18,6 +18,8 @@ target 'QuranApp' do
 
   pod 'react-native-keep-awake', :path => '../node_modules/react-native-keep-awake'
 
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+
   target 'QuranAppTests' do
     inherit! :complete
     # Pods for testing
